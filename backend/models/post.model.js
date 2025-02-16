@@ -9,6 +9,10 @@ const PostSchema = mongoose.Schema(
     body: {
       type: String,
       required: [true, "Post must have a body"]
+    },
+    author: {
+      type: mongoose.SchemaTypes.ObjectId,
+      required: [true, "Post must have an author"]
     }
   },
   {
@@ -16,6 +20,6 @@ const PostSchema = mongoose.Schema(
   }
 )
 
-const Product = mongoose.model("Post", PostSchema)
+const Post = mongoose.model("Post", PostSchema)
 
-export default Product
+export default Post 
