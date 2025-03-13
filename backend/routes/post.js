@@ -3,7 +3,7 @@ import Post from "../models/post.model.js"
 
 const postRouter = express.Router()
 
-postRouter.get("/", async (req, res) => {
+postRouter.get("/", async (_, res) => {
   res.json(await Post.find({}))
 })
 

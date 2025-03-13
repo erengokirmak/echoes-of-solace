@@ -2,6 +2,6 @@ import express from "express";
 
 const userRouter = express.Router()
 
-userRouter.get("/", (req, res) => {
-
+userRouter.get("/", (_, res) => {
+    res.sendStatus(501)
 })

@@ -1,10 +1,10 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import helmet from 'helmet';
-import Product from './models/post.model.js';
 import 'dotenv/config'
 import bodyParser from 'body-parser';
 import postRouter from './routes/post.js';
+import commentRouter from './routes/comment.js'
 
 const app = express()
 
@@ -14,19 +14,10 @@ app.use(helmet())
 // Middleware for parsing request bodies into json
 app.use(bodyParser.json())
 
-app.post("/api/post", async (req, res) => {
-  try {
-    const product = await Product.create(req.body)
-    res.status(200).json(product)
-  } catch (error) {
-    res.status(500).json({ message: error.message })
-  }
-})
-
 // TODO: Routing of all the endpoints
 //app.use("/api/users", userRouter)
 app.use("/api/posts", postRouter)
-//app.use("/api/comments", commentRouter)
+app.use("/api/comments", commentRouter)
 
 // For the most basic debugging
 app.get("/ping", (req, res) => {
